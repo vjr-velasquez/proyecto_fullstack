@@ -86,7 +86,8 @@ CREATE TABLE usuarios(
     nit VARCHAR(12),
     nombre VARCHAR(50),
     apellido VARCHAR(50),
-    direccion VARCHAR(100)
+    direccion VARCHAR(100),
+    empleado_id SMALLINT
 );
 
 CREATE TABLE usuarios_fijos(
@@ -94,12 +95,11 @@ CREATE TABLE usuarios_fijos(
     tipo_identificacion VARCHAR(13),
     no_identificacion VARCHAR(13),
     correo_electronico VARCHAR(100),
-    password VARCHAR(100),
-    tipo_usuario SMALLINT
+    password VARCHAR(100)
 );
 
 CREATE TABLE empleados(
-	empleado_id MEDIUMINT PRIMARY KEY,
+	empleado_id SMALLINT PRIMARY KEY,
     nombre VARCHAR(50),
     apellido VARCHAR(50),
     telefono INT(8),
@@ -120,7 +120,5 @@ AlTER TABLE estadia_vehiculo ADD CONSTRAINT FOREIGN KEY (carril_id) REFERENCES c
 AlTER TABLE vehiculos ADD CONSTRAINT FOREIGN KEY (marca) REFERENCES marcas(marca_id) ON UPDATE CASCADE ON DELETE CASCADE;
 AlTER TABLE vehiculos ADD CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON UPDATE CASCADE ON DELETE CASCADE;
 AlTER TABLE usuarios_fijos ADD CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON UPDATE CASCADE ON DELETE CASCADE;
-AlTER TABLE usuarios_fijos ADD CONSTRAINT FOREIGN KEY (tipo_usuario) REFERENCES tipos_usuarios(tipo_usuario_id) ON UPDATE CASCADE ON DELETE CASCADE;
 AlTER TABLE empleados ADD CONSTRAINT FOREIGN KEY (tipo_usuario) REFERENCES tipos_usuarios(tipo_usuario_id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
+AlTER TABLE usuarios ADD CONSTRAINT FOREIGN KEY (empleado_id) REFERENCES empleados(empleado_id) ON UPDATE CASCADE ON DELETE CASCADE;
