@@ -30,7 +30,8 @@ create table estadia(
     tarifa_id smallint,
     fecha_hora_entrada datetime,
     fecha_hora_salida datetime,
-    costo double(10,2)
+    costo double(10,2),
+    marbete MEDIUMINT
 );
 
 -- estadia alter table con facturas
@@ -86,8 +87,7 @@ CREATE TABLE usuarios(
     nit VARCHAR(12),
     nombre VARCHAR(50),
     apellido VARCHAR(50),
-    direccion VARCHAR(100),
-    empleado_id SMALLINT
+    direccion VARCHAR(100)
 );
 
 CREATE TABLE usuarios_fijos(
@@ -114,6 +114,15 @@ CREATE TABLE tipos_usuarios(
     nombre_tipo VARCHAR(50)
 );
 
+CREATE TABLE control_pagos(
+	control_id MEDIUMINT PRIMARY KEY,
+    no_factura MEDIUMINT,
+    fecha_emision DATE,
+    mes_pagado DATE,
+    monto DOUBLE(10,2),
+    cliente_id MEDIUMINT
+);
+
 ALTER TABLE estadia_vehiculo ADD CONSTRAINT FOREIGN KEY (estadia_id) REFERENCES estadia(estadia_id) ON UPDATE CASCADE ON DELETE CASCADE;
 AlTER TABLE estadia_vehiculo ADD CONSTRAINT FOREIGN KEY (vehiculo_id) REFERENCES vehiculos(vehiculo_id) ON UPDATE CASCADE ON DELETE CASCADE;
 AlTER TABLE estadia_vehiculo ADD CONSTRAINT FOREIGN KEY (carril_id) REFERENCES carriles(carril_id) ON UPDATE CASCADE ON DELETE CASCADE;
@@ -121,4 +130,5 @@ AlTER TABLE vehiculos ADD CONSTRAINT FOREIGN KEY (marca) REFERENCES marcas(marca
 AlTER TABLE vehiculos ADD CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON UPDATE CASCADE ON DELETE CASCADE;
 AlTER TABLE usuarios_fijos ADD CONSTRAINT FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id) ON UPDATE CASCADE ON DELETE CASCADE;
 AlTER TABLE empleados ADD CONSTRAINT FOREIGN KEY (tipo_usuario) REFERENCES tipos_usuarios(tipo_usuario_id) ON UPDATE CASCADE ON DELETE CASCADE;
-AlTER TABLE usuarios ADD CONSTRAINT FOREIGN KEY (empleado_id) REFERENCES empleados(empleado_id) ON UPDATE CASCADE ON DELETE CASCADE;
+AlTER TABLE control_pagos ADD CONSTRAINT FOREIGN KEY (no_factura) REFERENCES facturas(factura_id) ON UPDATE CASCADE ON DELETE CASCADE;
+AlTER TABLE control_pagos ADD CONSTRAINT FOREIGN KEY (cliente_id) REFERENCES usuarios(usuario_id) ON UPDATE CASCADE ON DELETE CASCADE;
