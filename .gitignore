@@ -1,0 +1,32 @@
+# Created for CodeIgniter 4
+
+# Archivos de caché
+*/cache/*
+!*/cache/index.html
+
+# Archivos de registro
+*/logs/*
+!*/logs/index.html
+!*/logs/.htaccess
+
+# Sesiones (si no usas base de datos)
+*/session/*
+!*/session/index.html
+
+# Dependencias de Composer
+/vendor/
+
+# Archivo de configuración de entorno
+.env
+
+# Directorios generados por el framework
+/writable/
+
+# Guía de usuario
+/user_guide/
+
+# Archivos del IDE, sistema operativo, etc.
+.DS_Store
+.vscode/
+.idea/
+Thumbs.db
