@@ -19,9 +19,6 @@
 # Archivo de configuración de entorno
 .env
 
-# Directorios generados por el framework
-/writable/
-
 # Guía de usuario
 /user_guide/
 
