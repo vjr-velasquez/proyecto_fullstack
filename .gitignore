@@ -55,11 +55,7 @@ composer.lock
 public/assets/vendor/*
 !public/assets/vendor/index.html
 
-# ================
-# Configuracion de rutas
-# ================
 
-/app/Config/Routes.php
 
 # =========================
 # Otros
