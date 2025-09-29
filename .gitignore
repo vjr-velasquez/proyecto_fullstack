@@ -38,10 +38,6 @@ writable/uploads/*
 .env.*
 .phpunit.result.cache
 
-# Configuración sensible
-app/config/config.php
-app/config/database.php
-app/config/email.php
 
 
 # =========================
