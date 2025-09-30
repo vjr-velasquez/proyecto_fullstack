@@ -7,6 +7,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
+$routes->get('prueba', 'Home::prueba');
+
 
 //rutas estadia
 $routes->get('estadia','EstadiaController::index');

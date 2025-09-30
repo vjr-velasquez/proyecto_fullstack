@@ -24,6 +24,7 @@ writable/cache/*
 writable/logs/*
 writable/session/*
 writable/uploads/*
+writable/cache/debugbar/*
 
 # Dejar un index.html vacío para seguridad
 !writable/cache/index.html
@@ -38,10 +39,6 @@ writable/uploads/*
 .env.*
 .phpunit.result.cache
 
-# Configuración sensible
-app/config/config.php
-app/config/database.php
-app/config/email.php
 
 
 # =========================
