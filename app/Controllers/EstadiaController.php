@@ -9,7 +9,7 @@ class EstadiaController extends BaseController
     {
         $estadia = new EstadiaModel();
         $datos['datos'] = $estadia->findAll();
-        return view('estadia/index', $datos);
+        return view('estadia', $datos);
     }
 
     // eliminar estadia
@@ -23,7 +23,7 @@ class EstadiaController extends BaseController
             session()->setFlashdata('mensaje', 'Error al eliminar la estadía');
             session()->setFlashdata('tipo', 'error');
         }
-        return redirect()->to(base_url().'/estadia');
+        return redirect()->to(base_url().'estadia');
     }
 
     // agregar estadia

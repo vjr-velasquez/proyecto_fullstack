@@ -80,10 +80,10 @@
                         <input type="number" name="txt_tarifa_id" id="txt_tarifa_id" class="form-control">
 
                         <label for="txt_fecha_entrada" class="form-label mt-2">Fecha y Hora de Entrada</label>
-                        <input type="datetime-local" name="txt_fecha_entrada" id="txt_fecha_entrada" class="form-control">
+                        <input type="date" name="txt_fecha_entrada" id="txt_fecha_entrada" class="form-control">
 
                         <label for="txt_fecha_salida" class="form-label mt-2">Fecha y Hora de Salida</label>
-                        <input type="datetime-local" name="txt_fecha_salida" id="txt_fecha_salida" class="form-control">
+                        <input type="date" name="txt_fecha_salida" id="txt_fecha_salida" class="form-control">
 
                         <label for="txt_costo" class="form-label mt-2">Costo</label>
                         <input type="number" step="0.01" name="txt_costo" id="txt_costo" class="form-control">
