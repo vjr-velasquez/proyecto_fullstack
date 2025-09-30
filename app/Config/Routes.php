@@ -15,3 +15,4 @@ $routes->get('eliminar_estadia/(:num)', 'EstadiaController::eliminar/$1');
 $routes->get('buscar_estadia/(:num)', 'EstadiaController::buscar/$1');
 $routes->post('editar_estadia','EstadiaController::editar');
 
+ 
