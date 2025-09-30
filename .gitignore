@@ -24,6 +24,7 @@ writable/cache/*
 writable/logs/*
 writable/session/*
 writable/uploads/*
+writable/cache/debugbar/*
 
 # Dejar un index.html vacío para seguridad
 !writable/cache/index.html
