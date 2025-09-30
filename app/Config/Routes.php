@@ -7,5 +7,4 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-$routes->get('estadia', 'EstadiaController::estadia');
-$routes->post('/calcular-estadia', 'EstadiaController::calcular');
+$routes->get('prueba', 'Home::prueba');
