@@ -7,9 +7,6 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-<<<<<<< HEAD
-$routes->get('prueba', 'Home::prueba');
-=======
 $routes->get('prueba', 'Home::prueba');
 
 
@@ -130,4 +127,13 @@ $routes->get('eliminar_marca/(:num)', 'MarcaController::eliminar/$1');
 $routes->get('buscar_marca/(:num)', 'MarcaController::buscar/$1');   
 $routes->post('editar_marca','MarcaController::editar');
 
->>>>>>> 8c3f59df50f0a2e47fc24430841a0737f503ac7d
+<?php
+
+use CodeIgniter\Router\RouteCollection;
+
+/**
+ * @var RouteCollection $routes
+ */
+$routes->get('/', 'Home::index');
+
+$routes->get('prueba', 'Home::prueba');
