@@ -9,6 +9,7 @@ $routes->get('/', 'Home::index');
 
 $routes->get('prueba', 'Home::prueba');
 
+$routes->view('form','agregarVehiculo');
 
 //rutas estadia
 $routes->get('estadia','EstadiaController::index');
@@ -127,13 +128,3 @@ $routes->get('eliminar_marca/(:num)', 'MarcaController::eliminar/$1');
 $routes->get('buscar_marca/(:num)', 'MarcaController::buscar/$1');   
 $routes->post('editar_marca','MarcaController::editar');
 
-<?php
-
-use CodeIgniter\Router\RouteCollection;
-
-/**
- * @var RouteCollection $routes
- */
-$routes->get('/', 'Home::index');
-
-$routes->get('prueba', 'Home::prueba');
