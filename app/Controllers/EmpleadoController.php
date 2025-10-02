@@ -1,0 +1,67 @@
+<?php
+    namespace App\Controllers;
+    //Utilizamos el modelo
+    use App\Models\EmpleadosModel;
+    use App\Models\TipoUsuarioModel;
+
+    class EmpleadoController extends BaseController
+    {
+        public function index(): string
+        {
+            //Creamos un objeto de tipo EmpleadosModel
+            $empleado = new EmpleadosModel();
+
+            // Realizamos la busqueda con el findAll
+            $datos['datos']=$empleado->findAll(); // Select * from empleados
+
+            $tipoUsuario = new TipoUsuarioModel();
+
+            $datos['tipoUsuario'] = $tipoUsuario->findAll();
+            return view('empleados', $datos); 
+        }
+        public function agregarEmpleado(){
+            //Creamos un objeto de tipo EmpleadosModel
+            $empleado = new EmpleadosModel();
+            $datos=[
+                'empleado_id'=>$this->request->getPost('txt_id'),
+                'nombre'=>$this->request->getPost('txt_nombre'),
+                'apellido'=>$this->request->getPost('txt_apellido'),
+                'telefono'=>$this->request->getPost('txt_telefono'),
+                'puesto_id'=>$this->request->getPost('txt_puesto_id'),
+                'fecha_nacimiento'=>$this->request->getPost('txt_fecha_nacimiento')
+            ];
+           
+            $empleado->insert($datos);
+            return $this->index();
+        }
+        public function eliminar($id)
+        {
+            echo "Id enviado:  ".$id;
+            $empleado = new EmpleadosModel();
+            $empleado->delete($id);
+            return $this->index();
+
+        }
+        public function actualizar($id)
+        {
+            $empleado = new EmpleadosModel();
+            //Select * from empleado where empleado_id = $id
+            $datos['datos'] = $empleado->where(['empleado_id'=> $id])->first();
+            return view('form_actualizar_empleado', $datos);
+        }
+        public function editar()
+        {
+            $datos=[
+                'empleado_id'=>$this->request->getPost('txt_id'),
+                'nombre'=>$this->request->getPost('txt_nombre'),
+                'apellido'=>$this->request->getPost('txt_apellido'),
+                'telefono'=>$this->request->getPost('txt_telefono'),
+                'puesto_id'=>$this->request->getPost('txt_puesto_id'),
+                'fecha_nacimiento'=>$this->request->getPost('txt_fecha_nacimiento')
+            ];
+            $empleado = new EmpleadosModel();
+            $empleado->update($datos['empleado_id'],$datos);
+            return $this->index();
+        }
+    }
+?>
