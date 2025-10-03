@@ -6,11 +6,15 @@ use App\Models\EstadiaModel;
 class EstadiaController extends BaseController
 {
     public function index(): string
-    {
-        $estadia = new EstadiaModel();
-        $datos['datos'] = $estadia->findAll();
-        return view('estadia', $datos);
-    }
+{
+    $estadia = new EstadiaModel();
+    $datos['datos'] = $estadia->findAll();
+
+    $tarifaModel = new \App\Models\TarifaModel();
+    $datos['tarifas'] = $tarifaModel->findAll();
+
+    return view('estadia', $datos);
+}
 
     // eliminar estadia
     public function eliminar($id)
@@ -27,27 +31,43 @@ class EstadiaController extends BaseController
     }
 
     // agregar estadia
-    public function agregarEstadia()
-    {
-        $estadia = new EstadiaModel();
-        $datos = [
-            'tarifa_id'          => $this->request->getPost('txt_tarifa_id'),
-            'fecha_hora_entrada' => $this->request->getPost('txt_fecha_entrada'),
-            'fecha_hora_salida'  => $this->request->getPost('txt_fecha_salida'),
-            'costo'              => $this->request->getPost('txt_costo'),
-            'marbete'            => $this->request->getPost('txt_marbete')
-        ];
+     public function agregarEstadia()
+{
+    $estadia = new \App\Models\EstadiaModel();
+    $tarifa_id = $this->request->getPost('txt_tarifa_id');
 
-        if($estadia->insert($datos)){
-            session()->setFlashdata('mensaje', 'Estadía agregada correctamente');
-            session()->setFlashdata('tipo', 'success');
-        } else {
-            session()->setFlashdata('mensaje', 'Error al agregar la estadía');
-            session()->setFlashdata('tipo', 'error');
-        }
-
+    // validar que la tarifa exista
+    $tarifaModel = new \App\Models\TarifaModel();
+    if (empty($tarifa_id) || !$tarifaModel->find($tarifa_id)) {
+        session()->setFlashdata('mensaje', 'Tarifa inválida o no existente.');
+        session()->setFlashdata('tipo', 'error');
         return redirect()->to(base_url().'/estadia');
     }
+
+    $datos = [
+        'tarifa_id'          => $tarifa_id,
+        'fecha_hora_entrada' => $this->request->getPost('txt_fecha_entrada'),
+        'fecha_hora_salida'  => $this->request->getPost('txt_fecha_salida'),
+        'costo'              => $this->request->getPost('txt_costo'),
+    ];
+
+    try {
+        $insertId = $estadia->insert($datos);
+        if ($insertId === false) {
+            session()->setFlashdata('mensaje', 'Error al agregar la estadía (insert devolvió false)');
+            session()->setFlashdata('tipo', 'error');
+        } else {
+            session()->setFlashdata('mensaje', 'Estadía agregada correctamente. ID: ' . $insertId);
+            session()->setFlashdata('tipo', 'success');
+        }
+    } catch (\Throwable $e) {
+        log_message('error', 'Error insertar estadia: ' . $e->getMessage());
+        session()->setFlashdata('mensaje', 'Excepción al insertar: ' . $e->getMessage());
+        session()->setFlashdata('tipo', 'error');
+    }
+
+    return redirect()->to(base_url().'/estadia');
+}
 
     // buscar estadia
     public function buscar($id)
@@ -67,7 +87,7 @@ class EstadiaController extends BaseController
             'fecha_hora_entrada' => $this->request->getPost('txt_fecha_entrada'),
             'fecha_hora_salida'  => $this->request->getPost('txt_fecha_salida'),
             'costo'              => $this->request->getPost('txt_costo'),
-            'marbete'            => $this->request->getPost('txt_marbete')
+            
         ];
 
         if($estadia->update($id, $datos)){

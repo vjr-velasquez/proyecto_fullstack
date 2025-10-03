@@ -3,14 +3,14 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class EstadiaModel extends Model
+class TarifaModel extends Model
 {
-    protected $table = 'estadia';
-    protected $primaryKey = 'estadia_id';
+    protected $table = 'tarifa';
+    protected $primaryKey = 'tarifa_id';
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     
-    protected $allowedFields = ['Estadia_id', 'tarifa_id', 'fecha_hora_entrada', 'fecha_hora_salida', 'costo'];
+    protected $allowedFields = ['tarifa_id','descripcion', 'precio'];
 
     function unionTarifas(){
         $this->select('estadia.*, tarifa.*');
@@ -18,5 +18,4 @@ class EstadiaModel extends Model
         $query = $this->get();
         return $query->getResultArray();
     }
-}
-
+}   
