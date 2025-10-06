@@ -19,21 +19,29 @@
             $datos['tipoUsuario'] = $tipoUsuario->findAll();
             return view('empleados', $datos); 
         }
-        public function agregarEmpleado(){
-            //Creamos un objeto de tipo EmpleadosModel
-            $empleado = new EmpleadosModel();
-            $datos=[
-                'empleado_id'=>$this->request->getPost('txt_id'),
-                'nombre'=>$this->request->getPost('txt_nombre'),
-                'apellido'=>$this->request->getPost('txt_apellido'),
-                'telefono'=>$this->request->getPost('txt_telefono'),
-                'puesto_id'=>$this->request->getPost('txt_puesto_id'),
-                'fecha_nacimiento'=>$this->request->getPost('txt_fecha_nacimiento')
+        public function agregarEmpleado()
+        {
+            $datos = [
+                'empleado_id' => $this->request->getPost('txt_id'),
+                'nombre' => $this->request->getPost('txt_nombre'),
+                'apellido' => $this->request->getPost('txt_apellido'),
+                'telefono' => $this->request->getPost('txt_telefono'),
+                'correo_electronico' => $this->request->getPost('txt_correo'),
+                'direccion' => $this->request->getPost('txt_direccion'),
+                'tipo_usuario' => $this->request->getPost('txt_tipo_usuario')
             ];
-           
+            //print_r($datos);
+            
+            // Inserta en la base de datos
+            $empleado = new EmpleadosModel();
             $empleado->insert($datos);
             return $this->index();
+            
+
+
         }
+
+
         public function eliminar($id)
         {
             echo "Id enviado:  ".$id;
@@ -49,6 +57,7 @@
             $datos['datos'] = $empleado->where(['empleado_id'=> $id])->first();
             return view('form_actualizar_empleado', $datos);
         }
+
         public function editar()
         {
             $datos=[

@@ -21,48 +21,45 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Empleado1</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Empleado</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="agregarEmpleado" method="post">
-                    <label for="txt_id" class="form-label">Empleado Id</label>
-                    <input type="number" name="txt_id" id="txt_id" class="form-control">
+            <form action="<?php echo base_url('agregarEmpleado'); ?>" method="post">
 
-                    <label for="txt_nombre" class="form-label">Nombre</label>
-                    <input type="text" name="txt_nombre" id="txt_nombre" class="form-control">
+                <label for="txt_id" class="form-label">Empleado Id</label>
+                <input type="text" name="txt_id" id="txt_id" class="form-control">
 
-                    <label for="txt_apellido" class="form-label">Apellido</label>
-                    <input type="text" name="txt_apellido" id="txt_apellido" class="form-control">
+                <label for="txt_nombre" class="form-label">Nombre</label>
+                <input type="text" name="txt_nombre" id="txt_nombre" class="form-control">
 
-                    <label for="txt_telefono" class="form-label">Telefono</label>
-                    <input type="number" name="txt_telefono" id="txt_telefono" class="form-control">
+                <label for="txt_apellido" class="form-label">Apellido</label>
+                <input type="text" name="txt_apellido" id="txt_apellido" class="form-control">
 
-                    <label for="txt_corre" class="form-label">Correo Electronico</label>
-                    <input type="number" name="txt_correo" id="txt_correo" class="form-control">
+                <label for="txt_telefono" class="form-label">Telefono</label>
+                <input type="text" name="txt_telefono" id="txt_telefono" class="form-control">
 
-                    <label for="txt_direccion" class="form-label">Direccion</label>
-                    <input type="text" name="txt_direccion" id="txt_fecha_direccion" class="form-control">
+                <label for="txt_correo" class="form-label">Correo Electronico</label>
+                <input type="text" name="txt_correo" id="txt_correo" class="form-control">
 
-                    <label for="txt_tipo_usuario" class="form-label">Tipo de usuario</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <?php
-                            foreach($tipoUsuario as $tipo){
-                        ?>
-                        <option value = "<?=$tipo['tipo_usuario_id'];?>">
-                            <?=$tipo['nombre_tipo'];?>
-                        </option>
-                        <?php
-                            }
-                        ?>
-                    </select>
+                <label for="txt_direccion" class="form-label">Direccion</label>
+                <input type="text" name="txt_direccion" id="txt_direccion" class="form-control">
 
-                    <label for="txt_direccion" class="form-label">Direccion</label>
-                    <input type="date" name="txt_direccion" id="txt_direccion" class="form-control">
-
-                    <br>
-                    <button type = "submit" class="btn btn-outline-success" data-bs-dismiss="modal">Guardar Cambios</button>
-                </form>
+                <label for="txt_tipo_usuario" class="form-label">Tipo de usuario</label>
+                <select class="form-select" name="txt_tipo_usuario" id="txt_tipo_usuario">
+                    <?php
+                        foreach($tipoUsuario as $tipo){
+                    ?>
+                    <option value="<?=$tipo['tipo_usuario_id'];?>">
+                        <?=$tipo['nombre_tipo'];?>
+                    </option>
+                    <?php
+                        }
+                    ?>
+                </select>
+                <br>
+                <button type="submit" class="btn btn-outline-success">Guardar Cambios</button>
+            </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -92,8 +89,9 @@
                 <td><?=$empleado['nombre'];?></td>
                 <td><?=$empleado['apellido'];?></td>
                 <td><?=$empleado['telefono'];?></td>
-                <td><?=$empleado['puesto_id'];?></td>
-                <td><?=$empleado['fecha_nacimiento'];?></td>
+                <td><?=$empleado['correo_electronico'];?></td>
+                <td><?=$empleado['direccion'];?></td>
+                <td><?=$empleado['tipo_usuario'];?></td>
                 <td>
                     <a href="<?php echo base_url('eliminar/').$empleado['empleado_id'];?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                     <a href="<?php echo base_url('actualizar/').$empleado['empleado_id'];?>" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
