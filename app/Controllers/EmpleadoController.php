@@ -12,7 +12,7 @@
             $empleado = new EmpleadosModel();
 
             // Realizamos la busqueda con el findAll
-            $datos['datos']=$empleado->findAll(); // Select * from empleados
+            $datos['datos']=$empleado->tipoUsuario(); 
 
             $tipoUsuario = new TipoUsuarioModel();
 
@@ -44,18 +44,24 @@
 
         public function eliminar($id)
         {
-            echo "Id enviado:  ".$id;
+            //echo "Id enviado:  ".$id;
             $empleado = new EmpleadosModel();
             $empleado->delete($id);
-            return $this->index();
+            return $redirect()->back()->with('mensaje','El empleado ha sido eliminado correctamente');
 
         }
         public function actualizar($id)
         {
             $empleado = new EmpleadosModel();
-            //Select * from empleado where empleado_id = $id
-            $datos['datos'] = $empleado->where(['empleado_id'=> $id])->first();
-            return view('form_actualizar_empleado', $datos);
+            
+            // Obtener el empleado específico con su tipo de usuario
+            $datos['datos'] = $empleado->tipoUsuarioPorId($id);
+            
+            // Lista de tipos de usuario para el select
+            $tipoUsuario = new TipoUsuarioModel();
+            $datos['tipoUsuario'] = $tipoUsuario->findAll();
+            
+            return view('editar_empleado', $datos);
         }
 
         public function editar()

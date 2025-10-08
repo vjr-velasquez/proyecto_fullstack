@@ -25,7 +25,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <form action="<?php echo base_url('agregarEmpleado'); ?>" method="post">
+            <form action="<?php echo base_url('agregar_empleado'); ?>" method="post">
 
                 <label for="txt_id" class="form-label">Empleado Id</label>
                 <input type="text" name="txt_id" id="txt_id" class="form-control">
@@ -91,9 +91,9 @@
                 <td><?=$empleado['telefono'];?></td>
                 <td><?=$empleado['correo_electronico'];?></td>
                 <td><?=$empleado['direccion'];?></td>
-                <td><?=$empleado['tipo_usuario'];?></td>
+                <td><?=$empleado['nombre_tipo'];?></td>
                 <td>
-                    <a href="<?php echo base_url('eliminar/').$empleado['empleado_id'];?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                    <a href="<?php echo base_url('eliminar_empleado/').$empleado['empleado_id'];?>" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                     <a href="<?php echo base_url('actualizar/').$empleado['empleado_id'];?>" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
                 </td>
             </tr>
