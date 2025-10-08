@@ -20,6 +20,7 @@ class EstadiaController extends BaseController
     public function eliminar($id)
     {
         $estadia = new EstadiaModel();
+        
         if($estadia->delete($id)){
             session()->setFlashdata('mensaje', 'Estadía eliminada correctamente');
             session()->setFlashdata('tipo', 'success');
