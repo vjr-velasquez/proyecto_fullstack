@@ -72,6 +72,7 @@ $routes->post('agregar_empleado','EmpleadoController::agregarEmpleado');
 $routes->get('eliminar_empleado/(:num)', 'EmpleadoController::eliminar/$1');
 $routes->get('buscar_empleado/(:num)', 'EmpleadoController::buscar/$1');
 $routes->post('editar_empleado','EmpleadoController::editar');  
+$routes->get('actualizar/(:num)', 'EmpleadoController::actualizar/$1');
 
 
 

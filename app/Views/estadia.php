@@ -1,37 +1,51 @@
+
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadías</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-    body {
-        padding-top: 70px;
-    }
+    body { padding-top: 70px; }
     </style>
 </head>
-
 <body>
     <!-- Navbar fija -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="index"><i class="bi bi-house-fill"></i> Inicio</a>
-            <span class="navbar-text text-white ms-3">
-                <h3>Estadías</h3>
-            </span>
-            <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal"
-                data-bs-target="#modalAgregarEstadia">
+            <span class="navbar-text text-white ms-3"><h3>Estadías</h3></span>
+            <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#modalAgregarEstadia">
                 <i class="bi bi-plus-lg"></i> Agregar Estadía
             </button>
         </div>
     </nav>
 
     <div class="container mt-3">
+        <?php
+        // Mapeo rápido de tarifas por id para mostrar descripción/precio en la tabla
+        $tarifas_map = [];
+        if (isset($tarifas) && is_array($tarifas)) {
+            foreach ($tarifas as $t) {
+                $tarifas_map[$t['tarifa_id']] = $t;
+            }
+        }
+
+        // Tarifas fijas (IDs de ejemplo). Si usas IDs diferentes, cámbialos o adapta el controlador.
+        $fixed = [
+            100 => ['tarifa_id' => 100, 'descripcion' => 'Tarifa por hora', 'precio' => 12.00],
+            101 => ['tarifa_id' => 101, 'descripcion' => 'Tarifa por mes',  'precio' => 360.00],
+            102 => ['tarifa_id' => 102, 'descripcion' => 'Tarifa por año',  'precio' => 4320.00],
+        ];
+        foreach ($fixed as $id => $f) {
+            if (!isset($tarifas_map[$id])) {
+                $tarifas_map[$id] = $f;
+            }
+        }
+        ?>
         <!-- Tabla de estadias -->
         <table class="table">
             <thead>
@@ -47,17 +61,29 @@
             <tbody>
                 <?php foreach ($datos as $estadia): ?>
                 <tr>
-                    <td><?= $estadia['estadia_id']; ?></td>
-                    <td><?= $estadia['tarifa_id']; ?></td>
-                    <td><?= $estadia['fecha_hora_entrada']; ?></td>
-                    <td><?= $estadia['fecha_hora_salida']; ?></td>
-                    <td><?= $estadia['costo']; ?></td>
-
+                    <td><?= esc($estadia['estadia_id']); ?></td>
                     <td>
-                        <button class="btn btn-danger btn-eliminar" data-id="<?= $estadia['estadia_id']; ?>">
+                        <?php
+                        if (isset($tarifas_map[$estadia['tarifa_id']])) {
+                            $t = $tarifas_map[$estadia['tarifa_id']];
+                            $precio = $t['precio'] ?? $t['valor'] ?? '';
+                            echo esc($t['descripcion'] ?? 'Tarifa');
+                            if ($precio !== '') {
+                                echo ' - $' . number_format((float)$precio, 2);
+                            }
+                        } else {
+                            echo esc($estadia['tarifa_id']);
+                        }
+                        ?>
+                    </td>
+                    <td><?= esc($estadia['fecha_hora_entrada']); ?></td>
+                    <td><?= esc($estadia['fecha_hora_salida']); ?></td>
+                    <td><?= esc($estadia['costo']); ?></td>
+                    <td>
+                        <button class="btn btn-danger btn-eliminar" data-id="<?= esc($estadia['estadia_id']); ?>">
                             <i class="bi bi-trash-fill"></i>
                         </button>
-                        <a href="<?= base_url('buscar_estadia'.$estadia['estadia_id']); ?>" class="btn btn-info">
+                        <a href="<?= base_url('buscar_estadia/'.$estadia['estadia_id']); ?>" class="btn btn-info">
                             <i class="bi bi-pencil-fill"></i>
                         </a>
                     </td>
@@ -68,8 +94,7 @@
     </div>
 
     <!-- Modal agregar estadia -->
-    <div class="modal fade" id="modalAgregarEstadia" tabindex="-1" aria-labelledby="modalAgregarEstadiaLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="modalAgregarEstadia" tabindex="-1" aria-labelledby="modalAgregarEstadiaLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -78,22 +103,27 @@
                 </div>
                 <div class="modal-body">
                     <form id="formAgregarEstadia" action="<?= base_url('agregar_estadia'); ?>" method="post">
-                        <label for="txt_tarifa_id" class="form-label">Tarifa</label>
+                        <label for="txt_tarifa_id" class="form-label">Tarifas</label>
                         <select class="form-select" name="txt_tarifa_id" id="txt_tarifa_id">
                             <option value="" disabled selected>Seleccione una tarifa</option>
-                            <option value="1">10</option>
-                            <option value="2">20</option>
-                            <option value="3">30</option>
+
+                           
+                            <option value="100" data-precio="12.00">Tarifa por hora - $12.00</option>
+                            <option value="101" data-precio="360.00">Tarifa por mes - $360.00</option>
+                            <option value="102" data-precio="4320.00">Tarifa por año - $4,320.00</option>
+
+                            <!-- Opciones dinámicas desde la BD -->
                             <?php if (isset($tarifas) && is_array($tarifas)): ?>
-                            <?php foreach ($tarifas as $tarifa): ?>
-                            <option value="<?= $tarifa['tarifa_id']; ?>"><?= $tarifa['descripcion']; ?></option>
-                            <?php endforeach; ?>
+                                <?php foreach ($tarifas as $tarifa): ?>
+                                <option value="<?= esc($tarifa['tarifa_id']); ?>" data-precio="<?= esc($tarifa['precio'] ?? $tarifa['valor'] ?? ''); ?>">
+                                    <?= esc($tarifa['descripcion'] ?? ('Tarifa ' . $tarifa['tarifa_id'])); ?>
+                                </option>
+                                <?php endforeach; ?>
                             <?php endif; ?>
                         </select>
 
                         <label for="txt_fecha_entrada" class="form-label mt-2">Hora de Entrada</label>
-                        <input type="datetime-local" name="txt_fecha_entrada" id="txt_fecha_entrada"
-                            class="form-control">
+                        <input type="datetime-local" name="txt_fecha_entrada" id="txt_fecha_entrada" class="form-control">
 
                         <label for="txt_fecha_salida" class="form-label mt-2">Hora de Salida</label>
                         <input type="datetime-local" name="txt_fecha_salida" id="txt_fecha_salida" class="form-control">
@@ -112,10 +142,8 @@
     </div>
 
     <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-    <!-- SweetAlert confirmación eliminar -->
     <script>
     const botonesEliminar = document.querySelectorAll('.btn-eliminar');
     botonesEliminar.forEach(btn => {
@@ -138,27 +166,57 @@
         });
     });
 
+    // Auto completar costo al seleccionar tarifa
+    const selectTarifa = document.getElementById('txt_tarifa_id');
+    const inputCosto = document.getElementById('txt_costo');
+
+    if (selectTarifa) {
+        selectTarifa.addEventListener('change', function() {
+            const opt = this.options[this.selectedIndex];
+            const precio = opt ? opt.getAttribute('data-precio') : '';
+            if (precio !== null && precio !== '') {
+                inputCosto.value = precio;
+            } else {
+                inputCosto.value = '';
+            }
+        });
+
+        // Si abres el modal y ya viene una tarifa seleccionada, completar costo
+        const modal = document.getElementById('modalAgregarEstadia');
+        if (modal) {
+            modal.addEventListener('shown.bs.modal', function () {
+                const opt = selectTarifa.options[selectTarifa.selectedIndex];
+                const precio = opt ? opt.getAttribute('data-precio') : '';
+                if (precio !== null && precio !== '') {
+                    inputCosto.value = precio;
+                }
+            });
+        }
+    }
+
     // Validación antes de enviar el formulario
     const form = document.getElementById("formAgregarEstadia");
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
+    if (form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
 
-    let tarifa = document.getElementById("txt_tarifa_id").value.trim();
-    let entrada = document.getElementById("txt_fecha_entrada").value.trim();
-    let salida = document.getElementById("txt_fecha_salida").value.trim();
-    let costo = document.getElementById("txt_costo").value.trim();
+            let tarifa = document.getElementById("txt_tarifa_id").value.trim();
+            let entrada = document.getElementById("txt_fecha_entrada").value.trim();
+            let salida = document.getElementById("txt_fecha_salida").value.trim();
+            let costo = document.getElementById("txt_costo").value.trim();
 
-    if (tarifa === "" || entrada === "" || salida === "" || costo === "") {
-        Swal.fire({
-            title: "Campos vacíos",
-            text: "Por favor completa todos los campos.",
-            icon: "warning",
-            confirmButtonText: "Aceptar"
+            if (tarifa === "" || entrada === "" || salida === "" || costo === "") {
+                Swal.fire({
+                    title: "Campos vacíos",
+                    text: "Por favor completa todos los campos.",
+                    icon: "warning",
+                    confirmButtonText: "Aceptar"
+                });
+            } else {
+                form.submit();
+            }
         });
-    } else {
-        form.submit();
     }
-});
     </script>
 
     <!-- Mensajes con flashdata -->
@@ -174,5 +232,4 @@ form.addEventListener("submit", function(e) {
     <?php endif; ?>
 
 </body>
-
 </html>
