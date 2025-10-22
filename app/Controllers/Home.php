@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('layout/template');
+        return view('pagina_principal');
     }
 
     public function prueba(): string
