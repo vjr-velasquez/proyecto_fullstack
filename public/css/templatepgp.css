@@ -22,7 +22,7 @@ section {
 }
 .nobg {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("img/FondoPrincipal-no-parallax.jpg");
+    url("../img/FondoPrincipal-no-parallax.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
@@ -259,7 +259,7 @@ section {
 }
 .nobg2 {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("img/FondoContactoP.jpg");
+    url("../img/FondoContactoP.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;

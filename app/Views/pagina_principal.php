@@ -30,7 +30,7 @@
         </div>
         <div class="btncontenido">
           <div class="btns">
-            <a href="#info"
+            <a href="<?php echo base_url('login'); ?>"
               >Iniciar sesión<i class="fa-regular fa-circle-user"></i
             ></a>
           </div>

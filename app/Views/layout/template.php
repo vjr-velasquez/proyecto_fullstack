@@ -11,7 +11,7 @@
 <body>
     <div class="logo">
         <a href="">
-            <img src="<?php echo base_url('imagen/logo.png');?>" alt="" title="Pagina Principal">
+            <img src="<?php echo base_url('img/logo.png');?>" alt="" title="Pagina Principal">
         </a>
     </div>
     <div class="menu">

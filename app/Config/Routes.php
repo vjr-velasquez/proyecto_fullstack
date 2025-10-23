@@ -7,7 +7,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-$routes->get('prueba', 'Home::prueba');
+$routes->get('login', 'Home::login');
+$routes->post('validacion', 'LoginUserController::index');
 
 
 //rutas estadia
