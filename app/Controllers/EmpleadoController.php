@@ -47,7 +47,7 @@
             //echo "Id enviado:  ".$id;
             $empleado = new EmpleadosModel();
             $empleado->delete($id);
-            return $redirect()->back()->with('mensaje','El empleado ha sido eliminado correctamente');
+            return redirect()->back()->with('mensaje','El empleado ha sido eliminado correctamente');
 
         }
         public function actualizar($id)
