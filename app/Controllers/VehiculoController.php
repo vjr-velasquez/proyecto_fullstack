@@ -10,7 +10,7 @@ class VehiculoController extends BaseController
     {
         $vehiculoModel = new VehiculoModel();
         
-        $usuarioId = 1; 
+        $usuarioId = session()->get('usuario_id'); 
 
         $data['vehiculos'] = $vehiculoModel->where('usuario_id', $usuarioId)->findAll();
 

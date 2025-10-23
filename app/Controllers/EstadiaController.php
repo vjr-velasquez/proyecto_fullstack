@@ -42,7 +42,7 @@ class EstadiaController extends BaseController
     if (empty($tarifa_id) || !$tarifaModel->find($tarifa_id)) {
         session()->setFlashdata('mensaje', 'Tarifa inválida o no existente.');
         session()->setFlashdata('tipo', 'error');
-        return redirect()->to(base_url().'/estadia');
+        return redirect()->to(base_url().'estadia');
     }
 
     $datos = [
@@ -67,7 +67,7 @@ class EstadiaController extends BaseController
         session()->setFlashdata('tipo', 'error');
     }
 
-    return redirect()->to(base_url().'/estadia');
+    return redirect()->to(base_url().'estadia');
 }
 
     // buscar estadia
@@ -99,6 +99,6 @@ class EstadiaController extends BaseController
             session()->setFlashdata('tipo', 'error');
         }
 
-        return redirect()->to(base_url().'/estadia');
+        return redirect()->to(base_url().'estadia');
     }
 }
