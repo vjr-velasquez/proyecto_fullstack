@@ -8,9 +8,4 @@ class Home extends BaseController
     {
         return view('pagina_principal');
     }
-
-    public function login(): string
-    {
-        return view('form_cliente');
-    }
 }

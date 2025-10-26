@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ParkOne</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="<?php echo base_url("css/templatepgp.css");?>" />   
+    <link rel="stylesheet" href="<?php echo base_url("css/templatepgp.css");?>" />
+    <!-- Bootstrap v5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- CDN Font Awesome -->
     <link
       rel="stylesheet"
@@ -30,7 +34,7 @@
         </div>
         <div class="btncontenido">
           <div class="btns">
-            <a href="<?php echo base_url('login'); ?>"
+            <a href="<?= site_url('login') ?>"
               >Iniciar sesión<i class="fa-regular fa-circle-user"></i
             ></a>
           </div>
@@ -142,5 +146,10 @@
         </div>
       </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+    crossorigin="anonymous"></script>
+    <!-- Toast global -->
+    <?= $this->include('partials/toast') ?>
   </body>
 </html>

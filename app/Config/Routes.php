@@ -7,9 +7,16 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-$routes->get('login', 'Home::login');
-$routes->post('validacion', 'LoginUserController::index');
+$routes->get('login', 'Auth::showLogin');        // formulario
+$routes->post('auth/attempt', 'Auth::attempt');  // procesa login
+$routes->get('logout', 'Auth::logout');          // cerrar sesión
 
+$routes->get('login', 'Auth::showLogin', ['filter' => 'nocache']);
+$routes->group('portal', ['filter' => ['auth','nocache']], static function($routes){
+    $routes->get('', 'Portal::index');
+    $routes->get('estadia', 'Portal::estadia');
+    $routes->get('usuario', 'Portal::usuario');
+});
 
 //rutas estadia
 $routes->get('estadia','EstadiaController::index');

@@ -65,8 +65,8 @@ class Auth extends BaseController
 
         // Quita datos de autenticación
         $session->remove(['usuario_id', 'usuario_nombre', 'usuario_apellido', 'isLoggedIn']);
-        
-        // Evita fijación de sesión 
+
+        // Evita fijación de sesión
         $session->regenerate(true);
 
         // Suprime warning por unos segundos (para el "Atrás" inmediato)
