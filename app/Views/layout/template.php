@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <body>
     <div class="logo">
         <a href="">
-            <img src="<?php echo base_url('imagen/logo.png');?>" alt="" title="Pagina Principal">
+            <img src="<?php echo base_url('img/logo.png');?>" alt="" title="Pagina Principal">
         </a>
     </div>
     <div class="menu">
@@ -19,4 +19,4 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
-</html>
+</html> -->

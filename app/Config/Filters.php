@@ -34,6 +34,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'auth'          => \App\Filters\AuthFilter::class,
+        'nocache' => \App\Filters\NoCacheFilter::class,
     ];
 
     /**
@@ -61,7 +63,7 @@ class Filters extends BaseFilters
         ],
     ];
 
-    /**
+    /**  Error solution
      * List of filter aliases that are always
      * applied before and after every request.
      *
@@ -104,4 +106,7 @@ class Filters extends BaseFilters
      * @var array<string, array<string, list<string>>>
      */
     public array $filters = [];
+
+    // Removed duplicate $aliases and $globals declarations.
+
 }

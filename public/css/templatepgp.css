@@ -1,0 +1,968 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Roboto Condensed", sans-serif;
+}
+main {
+  width: 100%;
+  height: 100vh;
+}
+section {
+  width: 100%;
+  height: 100dvh;
+  position: relative;
+  color: #000;
+}
+.nobg {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/FondoPrincipal-no-parallax.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+}
+.logo {
+  position: absolute;
+  left: 0;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.logo img {
+  width: 130px;
+}
+.subcontenido {
+  position: absolute;
+  bottom: 0;
+  margin-left: 50px;
+  margin-bottom: 70px;
+}
+.subcontenido h1 {
+  text-transform: uppercase;
+  font-size: 5.3rem;
+  color: #ff4c4c;
+}
+.subcontenido h3 {
+  text-transform: uppercase;
+  font-size: 3rem;
+  color: #edf6f9;
+}
+.btncontenido {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 50px;
+  margin-bottom: 75px;
+  cursor: pointer;
+}
+.btns a {
+  width: 230px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff4c4c;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: #edf6f9;
+}
+.btns i {
+  font-size: 18px;
+  margin-top: 2.7px;
+  margin-left: 10px;
+}
+.bg {
+  background: linear-gradient(90deg, #e9ecef, #f8f9fa);
+}
+.title-vision {
+  position: absolute;
+  top: 70px;
+  left: 260px;
+}
+.title-vision h2 {
+  text-transform: uppercase;
+  font-size: 4.7rem;
+  color: #ff4c4c;
+}
+.image1-vision {
+  width: 800px;
+  height: 340px;
+  position: absolute;
+  top: 70px;
+  right: 190px;
+  overflow: hidden;
+}
+.image1-vision img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.contenido-vision {
+  width: 42%;
+  height: 200px;
+  position: absolute;
+  right: 190px;
+  bottom: 110px;
+}
+.contenido-vision p {
+  font-size: 1.3rem;
+  color: #212529;
+}
+.image2-vision {
+  width: 370px;
+  height: 650px;
+  position: absolute;
+  left: 170px;
+  bottom: 50px;
+  overflow: hidden;
+}
+.image2-vision img {
+  width: 100%;
+  height: 150%;
+  object-fit: cover;
+}
+.title-mision {
+  position: absolute;
+  top: 70px;
+  right: 470px;
+}
+.title-mision h2 {
+  text-transform: uppercase;
+  font-size: 4.7rem;
+  color: #ff4c4c;
+}
+.image1-mision {
+  width: 800px;
+  height: 340px;
+  position: absolute;
+  right: 190px;
+  bottom: 50px;
+  overflow: hidden;
+}
+.image1-mision img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.contenido-mision {
+  width: 42%;
+  height: 200px;
+  position: absolute;
+  top: 255px;
+  right: 190px;
+}
+.contenido-mision p {
+  font-size: 1.3rem;
+  color: #212529;
+}
+.image2-mision {
+  width: 370px;
+  height: 773px;
+  position: absolute;
+  left: 170px;
+  bottom: 50px;
+  overflow: hidden;
+}
+.image2-mision img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bg2 {
+  background: linear-gradient(90deg, #e9ecef, #f8f9fa);
+}
+.title-price {
+  position: absolute;
+  top: 70px;
+  left: 70px;
+}
+.title-price h2 {
+  text-transform: uppercase;
+  font-size: 3.1rem;
+  color: #ff4c4c;
+}
+.title-price h3 {
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  color: #212529;
+}
+.contenido-price {
+  width: 37.5%;
+  height: 460px;
+  position: absolute;
+  top: 250px;
+  left: 170px;
+}
+.subcont1-price h3 {
+  margin-left: -27px;
+  font-size: 2.2rem;
+  color: #212529;
+}
+.subcont1-price h4 {
+  font-size: 1.9rem;
+  color: #ff4c4c;
+}
+.subcont1-price p {
+  font-size: 1.3rem;
+  color: #212529;
+}
+.subcont2-price {
+  margin-top: 40px;
+}
+.subcont2-price h3 {
+  margin-left: -28px;
+  font-size: 2.2rem;
+  color: #212529;
+}
+.subcont2-price h4 {
+  font-size: 1.6rem;
+  color: #ff4c4c;
+}
+.subcont2-price p {
+  font-size: 1.2rem;
+  color: #212529;
+}
+.subcont3-price {
+  margin-top: 40px;
+}
+.subcont3-price h3 {
+  margin-left: -28px;
+  font-size: 2.2rem;
+  color: #212529;
+}
+.subcont3-price h4 {
+  font-size: 1.6rem;
+  color: #ff4c4c;
+}
+.subcont3-price p {
+  font-size: 1.2rem;
+  color: #212529;
+}
+.image1-price {
+  width: 550px;
+  height: 773px;
+  position: absolute;
+  top: 50px;
+  right: 190px;
+  overflow: hidden;
+}
+.image1-price img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.nobg2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/FondoContactoP.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+}
+.title-contacto {
+  width: 20%;
+  height: 150px;
+  position: absolute;
+  top: 70px;
+  left: 225px;
+}
+.title-contacto h2 {
+  text-transform: uppercase;
+  font-size: 4rem;
+  color: #edf6f9;
+}
+.blockcontac1 {
+  width: 32%;
+  height: 280px;
+  position: absolute;
+  top: 420px;
+  left: 225px;
+}
+.subcontacto1 h4 {
+  font-size: 1.6rem;
+  color: #ff4c4c;
+}
+.subcontacto1 p {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: #edf6f9;
+}
+.subcontacto2 {
+  margin-top: 82px;
+}
+.subcontacto2 h4 {
+  font-size: 1.6rem;
+  color: #ff4c4c;
+}
+.subcontacto2 p {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: #edf6f9;
+}
+.blockcontac2 {
+  width: 32%;
+  height: 280px;
+  position: absolute;
+  top: 420px;
+  right: 225px;
+}
+.subcontacto3 h4 {
+  font-size: 1.6rem;
+  color: #ff4c4c;
+}
+.subcontacto3 p {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: #edf6f9;
+}
+.subcontacto1 p:hover,
+.subcontacto2 p:hover,
+.subcontacto3 p:hover {
+  cursor: default;
+  transition: 0.2s all ease;
+  padding-left: 12px;
+}
+.subcontacto4 {
+  margin-top: 82px;
+}
+.subcontacto4 h4 {
+  font-size: 1.6rem;
+  color: #ff4c4c;
+}
+.subcontacto4 a {
+  margin-right: 17px;
+}
+.subcontacto4 i {
+  margin-top: 20px;
+  font-size: 1.7rem;
+  color: #edf6f9;
+}
+.subcontacto4 i:hover {
+  transform: translateY(-7px);
+  transition: 0.2s all ease;
+  cursor: pointer;
+}
+@media (max-width: 1834px) {
+  .title-vision {
+    top: 70px;
+  }
+  .image1-vision {
+    right: 110px;
+    height: 240px;
+  }
+  .contenido-vision {
+    right: 110px;
+    top: 420px;
+  }
+  .image2-vision {
+    height: 450px;
+  }
+  .title-mision {
+    right: 400px;
+  }
+  .image1-mision {
+    height: 240px;
+    right: 110px;
+  }
+  .contenido-mision {
+    right: 110px;
+  }
+  .image2-mision {
+    width: 370px;
+    height: 550px;
+  }
+}
+@media (max-width: 1720px) {
+  .image1-vision {
+    width: 750px;
+  }
+  .contenido-vision {
+    width: 49.9%;
+    right: 110px;
+    bottom: 260px;
+  }
+  .contenido-mision {
+    width: 49.9%;
+    top: 190px;
+  }
+  .image1-mision {
+    width: 750px;
+    right: 110px;
+  }
+  .contenido-price {
+    top: 200px;
+    left: 115px;
+  }
+  .image1-price {
+    width: 450px;
+    height: 585px;
+    right: 110px;
+  }
+  .blockcontac1 {
+    top: 350px;
+  }
+  .blockcontac2 {
+    top: 350px;
+  }
+}
+@media (max-width: 1512px) {
+  .image2-mision {
+    height: 810px;
+  }
+  .contenido-vision {
+    width: 49.9%;
+    right: 110px;
+    bottom: 150px;
+  }
+  .contenido-mision {
+    width: 49.9%;
+    top: 255px;
+  }
+}
+@media (max-width: 1500px) {
+  .title-vision {
+    left: 250px;
+  }
+  .image1-vision {
+    width: 600px;
+    height: 240px;
+    right: 150px;
+  }
+  .contenido-vision {
+    width: 39.5%;
+    right: 150px;
+    bottom: 200px;
+  }
+  .image2-vision {
+    width: 370px;
+    height: 650px;
+  }
+  .title-mision {
+    right: 320px;
+  }
+  .image1-mision {
+    width: 600px;
+    height: 240px;
+    right: 150px;
+  }
+  .contenido-mision {
+    width: 39.5%;
+    top: 265px;
+    right: 150px;
+  }
+  .title-price h2 {
+    font-size: 2.7rem;
+  }
+  .title-price h3 {
+    font-size: 1.7rem;
+  }
+  .image1-price {
+    width: 370px;
+    height: 773px;
+    top: 50px;
+    right: 150px;
+  }
+}
+@media (max-width: 1440px) {
+  .contenido-vision {
+    width: 42.9%;
+  }
+  .contenido-mision {
+    width: 40.9%;
+  }
+}
+@media (max-width: 1330px) {
+  .title-vision {
+    top: 120px;
+    left: 110px;
+  }
+  .image1-vision {
+    width: 450px;
+    right: 50px;
+    top: 120px;
+  }
+  .contenido-vision {
+    width: 43.5%;
+    right: 50px;
+    top: 475px;
+    bottom: 0;
+  }
+  .image2-vision {
+    width: 320px;
+    height: 600px;
+    left: 50px;
+    bottom: 0;
+  }
+  .title-mision {
+    right: 165px;
+  }
+  .image1-mision {
+    width: 450px;
+    height: 240px;
+    right: 50px;
+    bottom: 0;
+    top: 490px;
+  }
+  .contenido-mision {
+    width: 43.5%;
+    top: 220px;
+    right: 50px;
+  }
+  .image2-mision {
+    width: 320px;
+    height: 677px;
+    left: 50px;
+    top: 55px;
+    bottom: 0;
+  }
+  .title-price h2 {
+    font-size: 1.9rem;
+  }
+  .title-price h3 {
+    font-size: 1.3rem;
+  }
+  .contenido-price {
+    top: 200px;
+    left: 115px;
+  }
+  .subcont1-price h3 {
+    font-size: 2rem;
+  }
+  .subcont1-price h4 {
+    font-size: 1.7rem;
+  }
+  .subcont1-price p {
+    font-size: 1.2rem;
+  }
+  .subcont2-price h3 {
+    font-size: 2rem;
+  }
+  .subcont2-price h4 {
+    font-size: 1.7rem;
+  }
+  .subcont2-price p {
+    font-size: 1.2rem;
+  }
+  .subcont3-price h3 {
+    font-size: 2rem;
+  }
+  .subcont3-price h4 {
+    font-size: 1.7rem;
+  }
+  .subcont3-price p {
+    font-size: 1.2rem;
+  }
+  .image1-price {
+    width: 320px;
+    height: 700px;
+    right: 50px;
+  }
+}
+@media (max-width: 1324px) {
+  .title-contacto {
+    width: 25%;
+  }
+  .blockcontac2 {
+    right: 140px;
+  }
+}
+@media (max-width: 1204px) {
+  .image2-vision {
+    height: 500px;
+    top: 270px;
+    bottom: 0;
+  }
+}
+@media (max-width: 1154px) {
+  .image2-vision {
+    height: 500px;
+    top: 280px;
+    bottom: 0;
+  }
+}
+@media (max-width: 1134px) {
+  .subcontenido {
+    margin-bottom: 150px;
+  }
+  .btncontenido {
+    right: 0;
+    left: 50px;
+    bottom: -20px;
+  }
+}
+@media (max-width: 1059px) {
+  .image1-mision {
+    width: 450px;
+    height: 200px;
+    right: 50px;
+    top: 490px;
+  }
+  .contenido-price {
+    width: 45.5%;
+    top: 175px;
+    left: 115px;
+  }
+  .image1-price {
+    width: 340px;
+    height: 590px;
+    top: 50px;
+    right: 50px;
+  }
+  .title-contacto h2 {
+    font-size: 3.7rem;
+  }
+  .title-contacto {
+    width: 29%;
+    left: 50px;
+  }
+  .blockcontac2 {
+    right: 100px;
+  }
+}
+@media (max-width: 923px) {
+  .subcontenido h1 {
+    font-size: 4.7rem;
+  }
+  .subcontenido h3 {
+    font-size: 2.2rem;
+  }
+  .btns a {
+    font-size: 1.2rem;
+  }
+  .vh,
+  .mh,
+  .ph,
+  .ch {
+    width: 100%;
+    height: 1000px;
+  }
+  .vision,
+  .mision,
+  .price,
+  .contactos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .title-vision {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+    margin: 50px 0 20px 0;
+  }
+  .title-vision h2 {
+    font-size: 4rem;
+  }
+  .image1-vision {
+    width: 750px;
+    height: 310px;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .contenido-vision {
+    width: 77%;
+    position: relative;
+    right: 0;
+    top: 60px;
+    bottom: 0;
+  }
+  .contenido-vision p {
+    font-size: 1.2rem;
+  }
+  .image2-vision {
+    width: 750px;
+    height: 320px;
+    position: relative;
+    top: 50px;
+    left: 0;
+  }
+  .title-mision {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+    margin: -10px 0 20px 0;
+  }
+  .title-mision h2 {
+    font-size: 4rem;
+  }
+  .image1-mision {
+    width: 750px;
+    height: 310px;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .contenido-mision {
+    width: 77%;
+    height: 200px;
+    position: relative;
+    top: 60px;
+    right: 0;
+  }
+  .contenido-mision p {
+    font-size: 1.2rem;
+  }
+  .image2-mision {
+    width: 750px;
+    height: 291px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+  }
+  .image2-mision img {
+    object-position: 0 -550px;
+  }
+  .title-price {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+    margin: 10px 0 20px 0;
+  }
+  .contenido-price {
+    width: 77%;
+    height: 460px;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .image1-price {
+    width: 750px;
+    height: 310px;
+    position: relative;
+    top: 20px;
+    right: 0;
+  }
+  .title-contacto {
+    width: 100%;
+    height: 50px;
+    left: 0;
+    text-align: center;
+    margin: 10px 0 20px 0;
+  }
+  .title-contacto h2 {
+    font-size: 3rem;
+  }
+  .blockcontac1 {
+    width: 100%;
+    position: relative;
+    top: 50px;
+    left: 0;
+    text-align: center;
+  }
+  .blockcontac2 {
+    width: 100%;
+    margin-top: 25px;
+    position: relative;
+    top: 50px;
+    right: 0;
+    text-align: center;
+  }
+}
+@media (max-width: 793px) {
+  .image1-vision {
+    width: 550px;
+  }
+  .image2-vision {
+    width: 550px;
+  }
+  .image1-mision {
+    width: 550px;
+  }
+  .image2-mision {
+    width: 550px;
+  }
+  .image2-mision img {
+    object-position: 0 -270px;
+  }
+  .contenido-price {
+    width: 57%;
+  }
+  .image1-price {
+    width: 550px;
+    height: 250px;
+    top: 80px;
+  }
+}
+@media (max-width: 659px) {
+  .subcontenido h1 {
+    font-size: 4rem;
+  }
+  .subcontenido h3 {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 591px) {
+  .subcontenido h1 {
+    font-size: 2.9rem;
+  }
+  .subcontenido h3 {
+    font-size: 1.4rem;
+  }
+  .btns a {
+    width: 170px;
+    font-size: 1.2rem;
+  }
+  .btns i {
+    font-size: 17px;
+  }
+  .title-vision {
+    margin: -200px 0 50px 0;
+  }
+  .image1-vision {
+    width: 400px;
+    height: 170px;
+  }
+  .contenido-vision {
+    width: 70%;
+    top: 90px;
+  }
+  .image2-vision {
+    width: 400px;
+    height: 170px;
+    top: 170px;
+  }
+  .title-mision {
+    margin: -200px 0 50px 0;
+  }
+  .image1-mision {
+    width: 400px;
+    height: 170px;
+  }
+  .contenido-mision {
+    width: 70%;
+    top: 90px;
+  }
+  .image2-mision {
+    width: 400px;
+    height: 170px;
+    top: 170px;
+  }
+  .image2-mision img {
+    object-position: 0 -270px;
+  }
+  .title-price {
+    margin: -200px 0 50px 0;
+  }
+  .contenido-price {
+    width: 59%;
+  }
+  .image1-price {
+    width: 400px;
+    height: 170px;
+    top: 140px;
+  }
+}
+@media (max-width: 512px) {
+  .contenido-vision {
+    width: 77%;
+    top: 80px;
+  }
+  .contenido-mision {
+    width: 77%;
+    top: 90px;
+  }
+  .image2-mision {
+    top: 220px;
+  }
+  .image1-price {
+    top: 175px;
+  }
+}
+@media (max-width: 472px) {
+  .title-price h2 {
+    font-size: 1.5rem;
+  }
+  .title-price h3 {
+    font-size: 1.1rem;
+  }
+  .contenido-price {
+    top: 40px;
+  }
+  .subcont1-price h3 {
+    font-size: 1.8rem;
+  }
+  .subcont1-price h4 {
+    font-size: 1.5rem;
+  }
+  .subcont1-price p {
+    font-size: 1rem;
+  }
+  .subcont2-price h3 {
+    font-size: 1.8rem;
+  }
+  .subcont2-price h4 {
+    font-size: 1.5rem;
+  }
+  .subcont2-price p {
+    font-size: 1rem;
+  }
+  .subcont3-price h3 {
+    font-size: 1.8rem;
+  }
+  .subcont3-price h4 {
+    font-size: 1.5rem;
+  }
+  .subcont3-price p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 442px) {
+  .image1-vision {
+    width: 300px;
+  }
+  .image2-vision {
+    width: 300px;
+    top: 210px;
+  }
+  .image1-mision {
+    width: 300px;
+  }
+  .contenido-mision {
+    width: 77%;
+    top: 70px;
+  }
+  .image2-mision {
+    width: 300px;
+    top: 200px;
+  }
+  .image2-mision img {
+    object-position: 0 -200px;
+  }
+  .title-price {
+    margin: -100px 0 10px 0;
+  }
+  .image1-price {
+    width: 300px;
+    top: 160px;
+  }
+}
+@media (max-width: 344px) {
+  .contenido-vision {
+    top: 40px;
+  }
+  .contenido-mision {
+    top: 40px;
+  }
+  .image1-price {
+    height: 150px;
+    top: 175px;
+  }
+  .image2-mision {
+    width: 300px;
+    top: 250px;
+  }
+}
