@@ -1,0 +1,11 @@
+form{
+    padding: 50px;
+    font-family: cursive;
+    font-size: 25px;
+    color: #f57802;
+    text-shadow:
+    -1px -1px 0 black, /* Top-left shadow */
+    1px -1px 0 black, /* Top-right shadow */
+    -1px 1px 0 black, /* Bottom-left shadow */
+    1px 1px 0 black; /* Bottom-right shadow */
+}

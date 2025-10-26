@@ -9,6 +9,7 @@ $routes->get('/', 'Home::index');
 
 $routes->get('prueba', 'Home::prueba');
 
+$routes->view('form','agregarVehiculo');
 
 //rutas estadia
 $routes->get('estadia','EstadiaController::index');
