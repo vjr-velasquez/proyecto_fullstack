@@ -70,7 +70,7 @@ class Auth extends BaseController
         $session->regenerate(true);
 
         // Suprime warning por unos segundos (para el "Atrás" inmediato)
-        $session->setTempdata('suppressWarn', true, 0); // 8s es suficiente
+        $session->setTempdata('suppressWarn', true, 8); // 8s es suficiente
 
         // Redirige a login con toast INFO
         return redirect()
