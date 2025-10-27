@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/* Fondo con overlay */
+.contenido_bg{
+  position: relative;
+  min-height: 100svh; /* mejor en móviles con barras dinámicas */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    url('../img/menuBG.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* LOGO: en móvil fluye arriba; en desktop queda fijo a la izquierda */
+.logo{
+  position: static;
+  padding: 16px;
+  z-index: 2;
+}
+.logo img{
+  width: 120px;
+  max-width: 35vw;
+  height: auto;
+  display: block;
+}
+
+/* Contenedor del formulario */
+.contenido_bg .menu{
+  color: #fff; /* el texto alrededor, la card lleva su propio fondo */
+}
+
+/* Títulos */
+h1{ text-align: center; }
+
+/* Tarjeta del formulario (oscuro/claro) */
+/* La card semitransparencia: */
+
+.card{
+  /* background: rgba(255,255,255,0.9); */
+  /* background: rgba(255, 255, 255, 0.314); */
+  background: rgba(128, 127, 127, 0.214);
+  backdrop-filter: saturate(120%) blur(6px);
+  color: #fff;
+}
+
+.form-text {
+  color: #fff;
+}
+.form-control{
+  outline: none;
+  box-shadow: none;
+  border-color: #ced4da;
+  transition: border-color .25s ease, 
+  box-shadow .35s ease, 
+  background-color .25s ease;
+}
+.form-control:focus{
+  border-color: #ff6a00;
+  box-shadow: 0 0 0 .17rem rgba(255, 1, 1, 0.957);
+}
+
+/* Botón personalizado */
+.btn {
+  color: #fff;
+  background: #e4343c;
+}
+.btn:hover {
+  background: #ff4c4c;
+}
+
+/* BREAKPOINTS: Ajustes por tamaño */
+@media (min-width: 992px){
+  /* Desktop: logo fijo arriba-izq */
+  .logo{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+}

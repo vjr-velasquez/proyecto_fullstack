@@ -12,21 +12,24 @@ class Portal extends BaseController
                 'msg'  => 'Iniciá sesión para continuar.'
             ]);
         }
-        return view('menu_cliente'); // tu portal (menu_cliente.php)
+        return view('menu_cliente'); // portal (menu_cliente.php)
     }
 
+    public function vehiculo()
+    {
+        if (! session('isLoggedIn')) return redirect()->to('/');
+        $m = new \App\Models\VehiculoModel();
+        $data['vehiculos'] = $m->where('usuario_id',(int)session('usuario_id'))->findAll();
+        return view('vehiculos_lista',$data);
+    }
+    
     public function estadia()
     {
         if (! session('isLoggedIn')) return redirect()->to('/');
-
-        // aquí consultá por session('usuario_id') y armá la vista
-        return redirect()->to('/estadia'); // crea la vista si la vas a usar
+        $m = new \App\Models\EstadiaModel();
+        // si tuvieras relación usuario-estadía por otra tabla, ajusta aquí
+        $data['estadias'] = $m->findAll(); 
+        return view('estadia_lista',$data);
     }
 
-    public function usuario(): string
-    {
-        if (! session('isLoggedIn')) return redirect()->to('/');
-
-        return view('portal/usuario'); // crea la vista si la vas a usar
-    }
 }

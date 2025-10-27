@@ -1,0 +1,77 @@
+/* ===== Portal Usuario / Admin (aislado) ===== */
+body.portal-usuario .portal-card,
+body.portal-admin  .portal-card{
+  background: rgba(24, 24, 24, 0.65);
+  backdrop-filter: saturate(120%) blur(6px);
+  -webkit-backdrop-filter: saturate(120%) blur(6px);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  color: #fff;
+}
+
+/* subtítulo */
+body.portal-usuario .letter-1,
+body.portal-admin  .letter-1 { letter-spacing: .06em; }
+
+/* Botones plano/outline del portal (versión botones) */
+.btn-portal{ 
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+.btn-portal-outline{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.35);
+  color: #fff;
+}
+.btn-portal-outline:hover, .btn-portal-outline:focus{
+  background: rgba(255,255,255,.14);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0,0,0,.25);
+}
+
+/* ====== TILES con ícono ====== */
+.portal-grid{ --tile-size: 104px; }
+.portal-grid .tile{
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+}
+.portal-grid .tile .tile-icon{
+  width: var(--tile-size); height: var(--tile-size);
+  border-radius: 12px;
+  background: #ff6a00; /* naranja */
+  display: grid; place-items: center;
+  font-size: 2rem; color: #fff;
+  box-shadow: 0 6px 18px rgba(255,106,0,.35);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.portal-grid .tile .tile-label{
+  font-weight: 600; font-size: .95rem; color: #fff;
+  text-align: center; max-width: 120px;
+}
+.portal-grid .tile:focus .tile-icon,
+.portal-grid .tile:hover  .tile-icon{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(255,106,0,.45);
+  filter: brightness(1.05);
+}
+.portal-grid .tile:active .tile-icon{ transform: translateY(0); }
+
+/* ====== “Slider” horizontal muchas tiles ====== */
+.portal-scroller{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex; gap: 1.25rem;
+  scroll-snap-type: x mandatory;
+  padding-bottom: .25rem;
+}
+.portal-scroller .tile{
+  scroll-snap-align: start;
+  min-width: 132px;
+}
+
+/* Helpers */
+@media (max-width: 575.98px){
+  .portal-grid{ --tile-size: 88px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .btn-portal, .portal-grid .tile .tile-icon{ transition: none; }
+}

@@ -11,10 +11,10 @@ class AuthFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (! session('isLoggedIn')) {
+            $redir = redirect()->to('login');
 
-            $suppress = session()->getTempdata('suppressWarn'); // true si viene de logout reciente
-            $redir = redirect()->to('/');
-
+            // Si NO está la cookie efímera, mostramos el warning.
+            $suppress = $request->getCookie('suppressWarn') === '1';
             if (!$suppress) {
                 $redir = $redir->with('toast', [
                     'type' => 'warning',
@@ -24,8 +24,6 @@ class AuthFilter implements FilterInterface
             return $redir;
         }
     }
-    public function after(RequestInterface $request, 
-    ResponseInterface $response, $arguments = null) {}
-}
 
-?>
+    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null) {}
+}
