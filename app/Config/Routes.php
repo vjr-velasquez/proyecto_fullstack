@@ -7,16 +7,27 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-$routes->get('login', 'Auth::showLogin');        // formulario
-$routes->post('auth/attempt', 'Auth::attempt');  // procesa login
-$routes->get('logout', 'Auth::logout');          // cerrar sesión
+// Login
+$routes->get('login', 'Auth::showLogin', ['filter' => 'nocache']);  // Mostrar form sin cache
+$routes->post('auth/attempt', 'Auth::attempt');                     // Procesar login
+$routes->get('logout', 'Auth::logout', ['filter' => 'nocache']);    // Cerrar sesión
 
-$routes->get('login', 'Auth::showLogin', ['filter' => 'nocache']);
+// Portal protegido
 $routes->group('portal', ['filter' => ['auth','nocache']], static function($routes){
-    $routes->get('', 'Portal::index');
+    $routes->get('/', 'Portal::index');
     $routes->get('estadia', 'Portal::estadia');
-    $routes->get('usuario', 'Portal::usuario');
+    $routes->get('vehiculo', 'Portal::vehiculo');
 });
+
+// --- Acceso Staff (admin/empleado)
+$routes->get('staff/login','StaffAuth::showLogin',['filter'=>'nocache']);
+$routes->post('staff/attempt','StaffAuth::attempt');
+$routes->get('staff/logout','StaffAuth::logout',['filter'=>'nocache']);
+
+// --- Portales staff
+$routes->get('admin','PortalAdmin::index',['filter'=>['nocache']]);
+$routes->get('empleado','PortalEmpleado::index',['filter'=>['nocache']]);
+
 
 //rutas estadia
 $routes->get('estadia','EstadiaController::index');
