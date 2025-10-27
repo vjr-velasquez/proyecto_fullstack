@@ -16,8 +16,11 @@
     <!-- Navbar fija -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="<?php echo base_url('portal')?>"><i class="bi bi-house-fill"></i> Inicio</a>
+            <a class="navbar-brand" href="index"><i class="bi bi-house-fill"></i> Inicio</a>
             <span class="navbar-text text-white ms-3"><h3>Estadías</h3></span>
+            <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#modalAgregarEstadia">
+                <i class="bi bi-plus-lg"></i> Agregar Estadía
+            </button>
         </div>
     </nav>
 
@@ -49,10 +52,10 @@
                 <tr>
                     <th>ID Estadía</th>
                     <th>Tarifa</th>
-                    <th>Vehiculo</th>
                     <th>Entrada</th>
                     <th>Salida</th>
                     <th>Costo</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,10 +76,17 @@
                         }
                         ?>
                     </td>
-                    <td><?= esc($estadia['matricula']); ?></td>
                     <td><?= esc($estadia['fecha_hora_entrada']); ?></td>
                     <td><?= esc($estadia['fecha_hora_salida']); ?></td>
                     <td><?= esc($estadia['costo']); ?></td>
+                    <td>
+                        <button class="btn btn-danger btn-eliminar" data-id="<?= esc($estadia['estadia_id']); ?>">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                        <a href="<?= base_url('buscar_estadia/'.$estadia['estadia_id']); ?>" class="btn btn-info">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -98,10 +108,7 @@
                             <option value="" disabled selected>Seleccione una tarifa</option>
 
                            
-                            <option value="100" data-precio="12.00">Tarifa por hora - $12.00</option>
-                            <option value="101" data-precio="360.00">Tarifa por mes - $360.00</option>
-                            <option value="102" data-precio="4320.00">Tarifa por año - $4,320.00</option>
-
+                            
                             <!-- Opciones dinámicas desde la BD -->
                             <?php if (isset($tarifas) && is_array($tarifas)): ?>
                                 <?php foreach ($tarifas as $tarifa): ?>

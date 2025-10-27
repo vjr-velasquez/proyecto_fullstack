@@ -11,12 +11,14 @@
             //Creamos un objeto de tipo EmpleadosModel
             $empleado = new EmpleadosModel();
 
+            $datos['datos'] = $empleado->tipoUsuario();
+
             // Realizamos la busqueda con el findAll
-            $datos['datos']=$empleado->tipoUsuario(); 
+            //$datos['datos']=$empleado->tipoUsuario(); 
 
             $tipoUsuario = new TipoUsuarioModel();
 
-            $datos['tipoUsuario'] = $tipoUsuario->findAll();
+           $datos['tipoUsuario'] = $tipoUsuario->findAll();
             return view('empleados', $datos); 
         }
         public function agregarEmpleado()
@@ -35,7 +37,7 @@
             // Inserta en la base de datos
             $empleado = new EmpleadosModel();
             $empleado->insert($datos);
-            return $this->index();
+            return redirect()->route('empleados')->with('mensaje','El empleado ha sido eliminado correctamente');
             
 
 
@@ -47,7 +49,7 @@
             //echo "Id enviado:  ".$id;
             $empleado = new EmpleadosModel();
             $empleado->delete($id);
-            return redirect()->back()->with('mensaje','El empleado ha sido eliminado correctamente');
+            return redirect()->route('empleados')->with('mensaje','El empleado ha sido eliminado correctamente');
 
         }
         public function actualizar($id)
@@ -72,11 +74,12 @@
                 'apellido'=>$this->request->getPost('txt_apellido'),
                 'telefono'=>$this->request->getPost('txt_telefono'),
                 'puesto_id'=>$this->request->getPost('txt_puesto_id'),
+                'direccion'=>$this->request->getPost('txt_direccion'),
                 'fecha_nacimiento'=>$this->request->getPost('txt_fecha_nacimiento')
             ];
             $empleado = new EmpleadosModel();
             $empleado->update($datos['empleado_id'],$datos);
-            return $this->index();
+            return redirect()->route('empleados')->with('mensaje','El empleado ha sido eliminado correctamente');
         }
     }
 ?>

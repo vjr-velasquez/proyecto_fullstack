@@ -9,5 +9,14 @@ class VehiculoModel extends Model
     protected $table = 'vehiculos';
     protected $primaryKey = 'vehiculo_id';
     protected $returnType = 'array';
-    protected $allowedFields = ['usuario_id', 'nombre', 'descripcion', 'matricula'];
+    protected $allowedFields = ['matricula', 'usuario_id', 'marca', 'modelo', 'color'];
+
+    function vehiculosLista($id){
+        $this->select('vehiculos.*, marcas.*');
+        $this->join('marcas','vehiculos.marca = marcas.marca_id');
+        $this->where('vehiculos.usuario_id', $id);
+        $query = $this->get();
+        return $query->getResultArray();
+    }
+
 }

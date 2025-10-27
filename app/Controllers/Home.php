@@ -8,4 +8,11 @@ class Home extends BaseController
     {
         return view('pagina_principal');
     }
+
+    public function prueba(): string
+    {
+        return view('menu_cliente');
+    }
+
+
 }

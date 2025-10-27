@@ -5,10 +5,10 @@
 <div class="container d-flex justify-content-center">
   <div class="mx-auto p-1" style="width: 450px">
     <div class="cardform p-1" style="border-radius: 20px">
-      <div class="text-center pt-4 pb-5">
+      <div class="text-center pt-4 pb-1">
         <h1>Iniciar Sesión</h1>
       </div>
-      <form action="<?= site_url('auth/attempt') ?>" method="post" novalidate>
+      <form action="<?= base_url('auth/attempt') ?>" method="post" novalidate>
         <?= csrf_field() ?>
         <div class="form-floating mb-3">
           <input

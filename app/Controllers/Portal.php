@@ -15,12 +15,12 @@ class Portal extends BaseController
         return view('menu_cliente'); // tu portal (menu_cliente.php)
     }
 
-    public function estadia(): string
+    public function estadia()
     {
         if (! session('isLoggedIn')) return redirect()->to('/');
 
         // aquí consultá por session('usuario_id') y armá la vista
-        return view('portal/estadia'); // crea la vista si la vas a usar
+        return redirect()->to('/estadia'); // crea la vista si la vas a usar
     }
 
     public function usuario(): string

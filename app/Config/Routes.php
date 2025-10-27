@@ -47,11 +47,11 @@ $routes->post('editar_tarifa','TarifaController::editar');
 
 
 //rutas usuarios
-$routes->get('usuarios','UsuarioControler::index');
-$routes->post('agregar_usuario','UsuarioControler::agregarUsuario');    
-$routes->get('eliminar_usuario/(:num)', 'UsuarioControler::eliminar/$1');
-$routes->get('buscar_usuario/(:num)', 'UsuarioControler::buscar/$1');
-$routes->post('editar_usuario','UsuarioControler::editar');     
+$routes->get('usuarios','UsuarioController::index');
+$routes->post('agregar_usuario','UsuarioController::agregarUsuario');    
+$routes->get('eliminar_usuario/(:num)', 'UsuarioController::eliminar/$1');
+$routes->get('buscar_usuario/(:num)', 'UsuarioController::buscar/$1');
+$routes->post('editar_usuario','UsuarioController::editar');     
 
 
 
@@ -136,3 +136,4 @@ $routes->get('eliminar_marca/(:num)', 'MarcaController::eliminar/$1');
 $routes->get('buscar_marca/(:num)', 'MarcaController::buscar/$1');   
 $routes->post('editar_marca','MarcaController::editar');
 
+$routes->get('prueba', 'Home::prueba');

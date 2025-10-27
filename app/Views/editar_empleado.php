@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <h2>Modificar Estudiante</h2>
+    <h2>Modificar Empleado</h2>
     <div class="container">
         <div class="row">
             <div class="col-4 offset-4">
                 <form action="<?= base_url('editar_empleado') ?>" method="post">
 
-                    <label for="txt_id" class="form-label">Carne Carne_alumno</label>
+                    <label for="txt_id" class="form-label">Empleado Id</label>
                     <input type="number" name="txt_id" id="txt_id" class="form-control" value="<?= $datos['empleado_id']; ?>" readonly>
 
                     <label for="txt_nombre" class="form-label">Nombre</label>

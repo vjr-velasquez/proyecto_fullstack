@@ -34,7 +34,7 @@
         </div>
         <div class="btncontenido">
           <div class="btns">
-            <a href="<?= site_url('login') ?>"
+            <a href="<?= base_url('login') ?>"
               >Iniciar sesión<i class="fa-regular fa-circle-user"></i
             ></a>
           </div>

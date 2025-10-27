@@ -8,12 +8,18 @@ class EstadiaController extends BaseController
     public function index(): string
 {
     $estadia = new EstadiaModel();
-    $datos['datos'] = $estadia->findAll();
+    $datos['datos'] = $estadia->estadiaUsuario(session()->get('usuario_id'));
+
+    $datos['datosEmpleados'] = $estadia->findAll();
 
     $tarifaModel = new \App\Models\TarifaModel();
     $datos['tarifas'] = $tarifaModel->findAll();
 
-    return view('estadia', $datos);
+    if(session()->get('tipo_usuario_id')){
+        return view('estadiaEmpleados', $datos);
+    }else{
+        return view('estadia', $datos);
+    }
 }
 
     // eliminar estadia
@@ -47,7 +53,7 @@ class EstadiaController extends BaseController
 
     $datos = [
         'tarifa_id'          => $tarifa_id,
-        'fecha_hora_entrada' => $this->request->getPost('txt_fecha_entrada'),
+        'fecha_hora_entrada' => $this->request->ge  tPost('txt_fecha_entrada'),
         'fecha_hora_salida'  => $this->request->getPost('txt_fecha_salida'),
         'costo'              => $this->request->getPost('txt_costo'),
     ];
@@ -55,7 +61,7 @@ class EstadiaController extends BaseController
     try {
         $insertId = $estadia->insert($datos);
         if ($insertId === false) {
-            session()->setFlashdata('mensaje', 'Error al agregar la estadía (insert devolvió false)');
+            session()->s    etFlashdata('mensaje', 'Error al agregar la estadía (insert devolvió false)');
             session()->setFlashdata('tipo', 'error');
         } else {
             session()->setFlashdata('mensaje', 'Estadía agregada correctamente. ID: ' . $insertId);
