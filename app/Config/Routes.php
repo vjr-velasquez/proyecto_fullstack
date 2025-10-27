@@ -19,10 +19,10 @@ $routes->group('portal', ['filter' => ['auth','nocache']], static function($rout
     $routes->get('vehiculo', 'Portal::vehiculo');
 });
 
-// --- Acceso Staff (admin/empleado)
-$routes->get('staff/login','StaffAuth::showLogin',['filter'=>'nocache']);
-$routes->post('staff/attempt','StaffAuth::attempt');
-$routes->get('staff/logout','StaffAuth::logout',['filter'=>'nocache']);
+// Login staff (empleado/admin)
+$routes->get('staff/login', 'StaffAuth::showLogin', ['filter' => 'nocache']);
+$routes->post('staff/attempt', 'StaffAuth::attempt');
+$routes->get('staff/logout', 'StaffAuth::logout');
 
 // --- Portales staff
 $routes->get('admin','PortalAdmin::index',['filter'=>['nocache']]);

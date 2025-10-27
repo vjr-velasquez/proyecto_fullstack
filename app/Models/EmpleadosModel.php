@@ -6,17 +6,17 @@ use CodeIgniter\Model;
 
 class EmpleadosModel extends Model
 {
-    protected $table         = 'empleados';
-    protected $primaryKey    = 'empleado_id';
+    protected $table = 'empleados';
+    protected $primaryKey = 'empleado_id';
     protected $allowedFields = [
         'empleado_id',
-        'nombre', 
+        'nombre',
         'apellido',
         'telefono',
         'correo_electronico',
         'direccion',
-        'passsword',
-        'tipo_usuario',
+        'password',
+        'tipo_usuario'
     ];
 
     function tipoUsuario(){
