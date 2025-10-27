@@ -7,17 +7,24 @@ class EstadiaController extends BaseController
 {
     public function index(): string
 {
-    $estadia = new EstadiaModel();
-    $datos['datos'] = $estadia->estadiaUsuario(session()->get('usuario_id'));
+    
+    if(session()->get('staff_id')){
+        $estadia = new EstadiaModel();
+        $datos['datos'] = $estadia->estadiaLista();
 
-    $datos['datosEmpleados'] = $estadia->findAll();
+        $datos['datosEmpleados'] = $estadia->findAll();
 
-    $tarifaModel = new \App\Models\TarifaModel();
-    $datos['tarifas'] = $tarifaModel->findAll();
-
-    if(session()->get('tipo_usuario_id')){
+        $tarifaModel = new \App\Models\TarifaModel();
+        $datos['tarifas'] = $tarifaModel->findAll();
         return view('estadiaEmpleados', $datos);
     }else{
+        $estadia = new EstadiaModel();
+        $datos['datos'] = $estadia->estadiaUsuario(session()->get('usuario_id'));
+
+        $datos['datosEmpleados'] = $estadia->findAll();
+
+        $tarifaModel = new \App\Models\TarifaModel();
+        $datos['tarifas'] = $tarifaModel->findAll();
         return view('estadia', $datos);
     }
 }
@@ -53,7 +60,7 @@ class EstadiaController extends BaseController
 
     $datos = [
         'tarifa_id'          => $tarifa_id,
-        'fecha_hora_entrada' => $this->request->ge  tPost('txt_fecha_entrada'),
+        'fecha_hora_entrada' => $this->request->getPost('txt_fecha_entrada'),
         'fecha_hora_salida'  => $this->request->getPost('txt_fecha_salida'),
         'costo'              => $this->request->getPost('txt_costo'),
     ];
@@ -61,7 +68,7 @@ class EstadiaController extends BaseController
     try {
         $insertId = $estadia->insert($datos);
         if ($insertId === false) {
-            session()->s    etFlashdata('mensaje', 'Error al agregar la estadía (insert devolvió false)');
+            session()->setFlashdata('mensaje', 'Error al agregar la estadía (insert devolvió false)');
             session()->setFlashdata('tipo', 'error');
         } else {
             session()->setFlashdata('mensaje', 'Estadía agregada correctamente. ID: ' . $insertId);
@@ -107,4 +114,7 @@ class EstadiaController extends BaseController
 
         return redirect()->to(base_url().'estadia');
     }
+
+    
+
 }

@@ -15,7 +15,6 @@ $routes->get('logout', 'Auth::logout', ['filter' => 'nocache']);    // Cerrar se
 // Portal protegido
 $routes->group('portal', ['filter' => ['auth','nocache']], static function($routes){
     $routes->get('/', 'Portal::index');
-    $routes->get('estadia', 'Portal::estadia');
     $routes->get('vehiculo', 'Portal::vehiculo');
 });
 
@@ -31,6 +30,7 @@ $routes->get('empleado','PortalEmpleado::index',['filter'=>['nocache']]);
 
 //rutas estadia
 $routes->get('estadia','EstadiaController::index');
+$routes->get('estadiaEmpleados','EstadiaController::lista');
 $routes->post('agregar_estadia','EstadiaController::agregarEstadia');       
 $routes->get('eliminar_estadia/(:num)', 'EstadiaController::eliminar/$1');
 $routes->get('buscar_estadia/(:num)', 'EstadiaController::buscar/$1');

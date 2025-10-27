@@ -22,5 +22,12 @@ class EstadiaModel extends Model
         $query = $this->get();
         return $query->getResultArray();
     }
+
+    function estadiaLista(){
+        $this->select('estadia.*, tarifa.*');
+        $this->join('tarifa', 'tarifa.tarifa_id = estadia.tarifa_id');
+        $query = $this->get();
+        return $query->getResultArray();
+    }
 }
 

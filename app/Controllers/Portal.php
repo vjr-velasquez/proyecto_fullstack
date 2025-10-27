@@ -29,7 +29,7 @@ class Portal extends BaseController
         $m = new \App\Models\EstadiaModel();
         // si tuvieras relación usuario-estadía por otra tabla, ajusta aquí
         $data['estadias'] = $m->findAll(); 
-        return view('estadia_lista',$data);
+        return view('estadia',$data);
     }
 
 }
