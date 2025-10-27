@@ -18,5 +18,12 @@ class VehiculoModel extends Model
         $query = $this->get();
         return $query->getResultArray();
     }
+    function vehiculos(){
+        $this->select('vehiculos.*, marcas.*,usuarios.nombre');
+        $this->join('marcas','vehiculos.marca = marcas.marca_id');
+        $this->join('usuarios','vehiculos.usuario_id = usuarios.usuario_id');
+        $query = $this->get();
+        return $query->getResultArray();
+    }
 
 }

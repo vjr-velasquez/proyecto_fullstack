@@ -9,17 +9,23 @@ class VehiculoController extends BaseController
 {
     public function index()
     {
-        $vehiculoModel = new VehiculoModel();
-        $marcasModel = new MarcasModel();
-        $usuarioId = session()->get('usuario_id');
-
-
-        $data['vehiculos'] = $vehiculoModel->vehiculosLista(session()->get('usuario_id'));
-        $data['marcas'] = $marcasModel->findAll();
         
-        //$data['vehiculos'] = $vehiculoModel->where('usuario_id', $usuarioId)->findAll();
+        if(session()->get('staff_id')){
+            $vehiculoModel = new VehiculoModel();
 
-        return view('vehiculos_lista', $data);
+            $data['vehiculos'] = $vehiculoModel->vehiculos();
+            return view('vehiculosEmpleados', $data);
+        }else{
+            $vehiculoModel = new VehiculoModel();
+            $marcasModel = new MarcasModel();
+            $usuarioId = session()->get('usuario_id');
+
+
+            $data['vehiculos'] = $vehiculoModel->vehiculosLista(session()->get('usuario_id'));
+            $data['marcas'] = $marcasModel->findAll();
+            return view('vehiculos_lista', $data);
+        }
+        
     }
 
     public function agregarVehiculo(){

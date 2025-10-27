@@ -26,12 +26,6 @@
           <div class="tile-label">Empleado</div>
         </a>
       </div>
-      <div class="col">
-        <a class="tile text-decoration-none" href="<?= site_url('tipos_usuarios') ?>">
-          <div class="tile-icon"><i class="bi bi-shield-lock"></i></div>
-          <div class="tile-label">Tipo de Usuario</div>
-        </a>
-      </div>
     </div>
 
     <div class="d-grid mt-4">
