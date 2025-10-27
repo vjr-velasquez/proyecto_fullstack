@@ -32,6 +32,12 @@
           <div class="tile-label">Tipo de Pago</div>
         </a>
       </div>
+      <div class="col">
+        <a class="tile text-decoration-none" href="<?= site_url('usuarios') ?>">
+          <div class="tile-icon"><i class="bi bi-person"></i></div>
+          <div class="tile-label">Usuarios</div>
+        </a>
+      </div>
     </div>
 
     <div class="d-grid mt-4">
